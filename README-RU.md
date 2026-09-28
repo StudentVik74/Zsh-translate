@@ -1,6 +1,6 @@
 #  Утилита mymemory_translator.py плюс скрипт для терминала Zsh
 
-![terminal](../images/terminal.png)
+![terminal](./images/terminal.png)
 
 Утилита для пакетного перевода текста на русский язык через [MyMemory Translation API](https://mymemory.translated.net/).
 с одной зависимостью от библиотеки `requests`.
