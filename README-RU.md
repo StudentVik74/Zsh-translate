@@ -2,7 +2,7 @@
 
 ![terminal](./images/terminal.png)
 
-Утилита для пакетного перевода текста на русский язык через [MyMemory Translation API](https://mymemory.translated.net/) одной зависимостью от библиотеки `requests`.
+Утилита для пакетного перевода текста на русский язык через [MyMemory Translation API](https://mymemory.translated.net/) с одной зависимостью от библиотеки `requests`.
 
 Работает со стандартным потоком ввода (`stdin`) и выводит переведённый текст в `stdout`. Подходит для интеграции в конвейеры обработки текста (pipelines), скриптов и редакторов.
 
