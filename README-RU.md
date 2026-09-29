@@ -99,7 +99,7 @@ ru -t "You're 52 and decided to start learning programming? You're a legend!"
 
 ```bash
 mkdir -p ~/.zsh
-nano ~/.zsh/translate.py
+nano ~/.zsh/translate.py # можно в любом другом текстовом редакторе
 ```
 
 Вставить код из `mymemory_translator.py` и сохранить: `Ctrl+O`, `Enter`, `Ctrl+X.`
