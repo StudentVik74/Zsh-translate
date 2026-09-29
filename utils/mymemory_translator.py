@@ -105,7 +105,7 @@ def save_cache(cache: dict) -> None:
 		pass
 
 
-def check_quota():
+def check_quota() ->  bool | None:
 	"""Проверить квоту MyMemory.
 
 	Возвращает:
@@ -160,7 +160,7 @@ def notify_first_failure(e) -> None:
 		      "вероятно, проблема с сетью или сервером", file=sys.stderr)
 
 
-def lt_translate(text: str, source: str = "en", target: str = "ru"):
+def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str, bool]:
 	"""Переводит текст через MyMemory API.
 
 	Отправляет текст на перевод с указанного источника на целевой язык.
