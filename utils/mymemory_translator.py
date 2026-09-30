@@ -223,6 +223,9 @@ def process(text: str, cache: dict) -> str:
 		Переведённый текст с сохранением структуры (отступы, переносы).
 	"""
 
+	lines = text.split("\n")
+	plan  = []
+
 	for line in lines:
 		if should_skip(line):
 			plan.append({"type": "raw", "value": line})
