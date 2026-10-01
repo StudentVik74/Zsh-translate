@@ -209,41 +209,38 @@ def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str
 
 
 def process(text: str, cache: dict) -> str:
-	"""Обрабатывает текст: переводит строки с использованием кэша и API.
-
-	Алгоритм:
-	  1. Разбивает текст на строки.
-	  2. Отфильтровывает строки, которые не нужно переводить (пустые,
-	     уже на русском, командные строки и т.п.).
-	  3. Группирует строки, требующие перевода, в пакеты (батчи) по ≤ 400 символов.
-	  4. Отправляет пакеты в MyMemory API; при неудаче переводит построчно.
-	  5. Кэширует только успешные переводы.
-	  6. Собирает результат, сохраняя отступы и переносы строк.
-
-	Args:
-		text:  Входной текст для обработки.
-		cache: Текущий кэш переводов {hash: translation}.
-
-	Returns:
-		Переведённый текст с сохранением структуры (отступы, переносы).
-	"""
-
 	lines = text.split("\n")
-	plan  = []
+	plan = []
 
 	for line in lines:
 		if should_skip(line):
 			plan.append({"type": "raw", "value": line})
 			continue
-		m = re.match(r'^(\s*)(.*?)(\s*)$', line, re.DOTALL)
-		indent, body, trail = m.group(1), m.group(2), m.group(3)
+
+		# Строка вида "  команда    Описание" — переводим только описание
+		m_help = HELP_LINE_RE.match(line)
+		if m_help:
+			prefix = m_help.group(1) + m_help.group(2)
+			body   = m_help.group(3)
+			trail  = m_help.group(4)
+		else:
+			m = re.match(r'^(\s*)(.*?)(\s*)$', line, re.DOTALL)
+			prefix = m.group(1)
+			body   = m.group(2)
+			trail  = m.group(3)
+
 		k = key(body)
 		if k in cache:
-			plan.append({"type": "cached", "value": indent + cache[k] + trail})
+			plan.append({"type": "cached", "value": prefix + cache[k] + trail})
 		else:
-			plan.append({"type": "pending", "body": body,
-			             "indent": indent, "trail": trail,
-			             "k": k, "value": None})
+			plan.append({
+				"type": "pending",
+				"body": body,
+				"prefix": prefix,
+				"trail": trail,
+				"k": k,
+				"value": None,
+			})
 
 	i = 0
 	while i < len(plan):
@@ -260,34 +257,29 @@ def process(text: str, cache: dict) -> str:
 		batch  = plan[i:j]
 		bodies = [b["body"] for b in batch]
 
-		# Список кортежей (перевод, успех) — по одному на каждую строку батча
 		results = []
 
-		# 1. Пытаемся перевести весь батч(пакет) одним запросом
 		translated, ok = lt_translate("\n".join(bodies))
 		if ok:
 			parts = translated.split("\n")
 			if len(parts) == len(bodies):
 				results = [(p, True) for p in parts]
 			else:
-				print(f"[внимание!] пакет не переведён: не совпало число строк "
+				print(f"[warn] батч не переведён: не совпало число строк "
 				      f"({len(parts)} != {len(bodies)})", file=sys.stderr)
 
-		# 2. Если батч(пакет) не прошёл — переводим построчно
 		if not results:
 			for b in bodies:
 				results.append(lt_translate(b))
 
-		# 3. Применяем результаты, кэшируем только успешные
 		for b, (tr, line_ok) in zip(batch, results):
-			b["value"] = b["indent"] + tr + b["trail"]
+			b["value"] = b["prefix"] + tr + b["trail"]
 			if line_ok:
 				cache[b["k"]] = tr
 
 		i = j
 
 	return "\n".join(p["value"] for p in plan)
-
 
 def main() -> None:
 	"""Точка входа: читает stdin, переводит, пишет в stdout.
