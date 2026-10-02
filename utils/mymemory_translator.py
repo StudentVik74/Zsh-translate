@@ -250,7 +250,7 @@ def process(text: str, cache: dict) -> str:
 		j, size = i, 0
 		while (j < len(plan)
 		       and plan[j]["type"] == "pending"
-		       and size + len(plan[j]["body"]) < MAX_CHUNK):
+		       and size + len(plan[j]["body"]) <= MAX_CHUNK):
 			size += len(plan[j]["body"]) + 1
 			j += 1
 
