@@ -13,6 +13,15 @@ import json
 import hashlib
 import requests
 
+# Форсируем UTF-8 для stdin/stdout/stderr.
+# На Windows кодировка по умолчанию — CP1251, из-за чего BOM
+# и русские буквы читаются как кракозябры.
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+sys.stderr.reconfigure(encoding="utf-8")
+
+
+
 CACHE_FILE     = os.path.expanduser("~/.cache/translate_ru/translate_ru.json")
 LT_URL         = "https://api.mymemory.translated.net/get"
 MYMEMORY_EMAIL = ""     # ← впиши свой email для лимита 50000 символов/день
@@ -298,6 +307,8 @@ def main() -> None:
 	его «теряет», дописывает перенос вручную.
 	"""
 	text = sys.stdin.read()
+	if text.startswith('\ufeff'):
+		text = text[1:]
 	if not text.strip():
 		return
 	cache = load_cache()
