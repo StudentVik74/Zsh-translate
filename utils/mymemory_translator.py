@@ -16,9 +16,16 @@ import requests
 # Форсируем UTF-8 для stdin/stdout/stderr.
 # На Windows кодировка по умолчанию — CP1251, из-за чего BOM
 # и русские буквы читаются как кракозябры.
-sys.stdin.reconfigure(encoding="utf-8")
-sys.stdout.reconfigure(encoding="utf-8")
-sys.stderr.reconfigure(encoding="utf-8")
+#
+# В тестах (pytest) sys.stdin заменяется на DontReadFromInput,
+# у которого нет метода reconfigure. Поэтому проверяем наличие
+# метода перед вызовом — это безопасно и не ломает тесты.
+for _stream in (sys.stdin, sys.stdout, sys.stderr):
+	if hasattr(_stream, "reconfigure"):
+		try:
+			_stream.reconfigure(encoding="utf-8")
+		except Exception:
+			pass
 
 
 
@@ -266,7 +273,7 @@ def process(text: str, cache: dict) -> str:
 		j, size = i, 0
 		while (j < len(plan)
 		       and plan[j]["type"] == "pending"
-		       and size + len(plan[j]["body"]) <= MAX_CHUNK):
+		       and (j == i or size + len(plan[j]["body"])) <= MAX_CHUNK):
 			size += len(plan[j]["body"]) + 1
 			j += 1
 
