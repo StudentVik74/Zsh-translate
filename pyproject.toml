@@ -1,0 +1,24 @@
+[project]
+name = "zsh-translate"
+version = "0.1.0"
+description = "Переводчик на русский язык прямо в терминале"
+readme = "README-RU.md"
+requires-python = ">=3.12"
+dependencies = [
+"requests",
+]
+
+[dependency-groups]
+dev = [
+"pytest>=8.1.1,<9",
+"pytest-mock>=3.14.0",
+"pytest-cov>=6.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-m 'not integration'"
+markers = [
+"integration: тесты, требующие реальный MyMemory API (медленно, тратит квоту)",
+]
