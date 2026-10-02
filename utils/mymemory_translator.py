@@ -36,6 +36,9 @@ HELP_LINE_RE = re.compile(
 # Флаг: предупреждение о недоступности API
 _api_warned = False
 
+# Флаг: предупреждение о сбое сохранения кэша
+_cache_warned = False
+
 
 def should_skip(line: str) -> bool:
 	"""Определяет, следует ли пропустить строку при переводе.
@@ -97,17 +100,21 @@ def save_cache(cache: dict) -> None:
 	"""Сохраняет кэш переводов в JSON-файл.
 
 	Перед записью создаёт директорию кэша, если она не существует.
-	Все ошибки (нехватка прав, полный диск и т.п.) игнорируются.
+	При ошибке выводит предупреждение один раз за сеанс.
 
 	Args:
 		cache: Словарь для сохранения в формате {hash: translation}.
 	"""
+	global _cache_warned
 	try:
 		os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
 		with open(CACHE_FILE, "w", encoding="utf-8") as f:
 			json.dump(cache, f, ensure_ascii=False)
-	except Exception:
-		pass
+	except Exception as e:
+		if _cache_warned:
+			return
+		_cache_warned = True
+		print(f"[warn] не удалось сохранить кэш: {e}", file=sys.stderr)
 
 
 def check_quota() ->  bool | None:
