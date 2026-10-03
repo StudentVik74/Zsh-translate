@@ -78,7 +78,6 @@ notepad $PROFILE
 ```powershell
 ru
 ru -t "hello"
-ru ipconfig
 echo "test" | ru
 ```
 

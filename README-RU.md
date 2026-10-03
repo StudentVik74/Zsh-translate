@@ -170,10 +170,9 @@ ru <команда> [аргументы]
 Примеры:
 
 ```bash
-ru docker --help
+ru docker --help 
 ru git status
-ru ls -la /nonexistent
-ru systemctl status nginx
+ru uv --help
 ```
 
 ### 2. Перевод текста
