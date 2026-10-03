@@ -417,24 +417,3 @@ markers =
 
 ---
 
-## Порядок написания
-
-1. **`test_should_skip.py`** — самое простое, без моков.
-2. **`test_key.py`** — тривиально.
-3. **`test_cache.py`** — фикстура `tmp_path`.
-4. **`test_quota.py`** — первый опыт с моками.
-5. **`test_lt_translate.py`** — основная логика с моками.
-6. **`test_process.py`** — самый важный файл, много параметризации.
-7. **`test_main.py`** — end-to-end с `monkeypatch` и `capsys`.
-8. **Интеграционные** — в самом конце, помечены `@pytest.mark.integration`.
-
----
-
-## Дальнейшие шаги
-
-После того как тесты работают локально:
-
-1. **GitHub Actions** — автозапуск `pytest` при каждом push и pull request.
-2. **Codecov / Coveralls** — измерение покрытия в CI.
-3. **Badge в README** — «tests passing» и «coverage X%».
-4. **Pre-commit hook** — автозапуск быстрых тестов перед коммитом.
