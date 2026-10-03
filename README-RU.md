@@ -102,7 +102,7 @@
 
    ```bash
    mkdir -p ~/.zsh
-   cp mymemory_translator.py ~/.zsh/translate.py
+   cp translate.py ~/.zsh/translate.py
    python3 -m py_compile ~/.zsh/translate.py && echo OK
    ```
 

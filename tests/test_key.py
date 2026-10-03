@@ -10,7 +10,7 @@ import re
 
 import pytest
 
-from utils.mymemory_translator import key
+from utils.translate import key
 
 
 def test_key_is_deterministic():

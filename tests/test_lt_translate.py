@@ -12,7 +12,7 @@
 import pytest
 import requests
 
-from utils import mymemory_translator as mt
+from utils import translate as mt
 
 
 # ─── Успешный перевод ─────────────────────────────────────────────

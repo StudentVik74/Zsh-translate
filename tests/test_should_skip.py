@@ -1,7 +1,7 @@
 """Тесты для функции should_skip."""
 import pytest
 
-from utils.mymemory_translator import should_skip
+from utils.translate import should_skip
 
 
 # ─── Пустые строки ────────────────────────────────────────────────
