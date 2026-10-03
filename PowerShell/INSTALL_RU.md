@@ -62,7 +62,7 @@ if (!(Test-Path -Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force
 notepad $PROFILE
 ```
 
-Вставь содержимое `windows/profile.ps1`. **Сохрани как UTF-8**
+Вставь содержимое `PowerShell/profile.ps1`. **Сохрани как UTF-8**
 (Файл → Сохранить как → Кодировка: UTF-8).
 
 ### 6. Активация
