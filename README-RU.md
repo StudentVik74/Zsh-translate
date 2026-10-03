@@ -76,7 +76,7 @@
    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
 
-5. Добавьте функцию `ru` в профиль PowerShell. Подробная инструкция с готовым кодом — в [`PowerShell_in_Russian/INSTALL_RU.md`](PowerShell_in_Russian/INSTALL_RU.md).
+5. Добавьте функцию `ru` в профиль PowerShell. Подробная инструкция с готовым кодом — в [`PowerShell_in_Russian/INSTALL_RU.md`](PowerShell/INSTALL_RU.md).
 
 6. Перезапустите PowerShell и проверьте:
 
