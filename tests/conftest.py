@@ -42,4 +42,4 @@ def mock_requests(mocker):
 	Использование:
 		mock_requests.return_value.json.return_value = {...}
 	"""
-	return mocker.patch("utils.translate.requests.get")
+	return mocker.patch("utils/translate.requests.get")
