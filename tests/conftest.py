@@ -23,7 +23,7 @@ from utils import translate as mt
 def reset_flags(monkeypatch):
 	"""Сбросить глобальные флаги перед каждым тестом."""
 	monkeypatch.setattr(mt, "_api_warned", False)
-	monkeypatch.setattr(mt го, "_cache_warned", False)
+	monkeypatch.setattr(mt, "_cache_warned", False)
 	yield
 
 
