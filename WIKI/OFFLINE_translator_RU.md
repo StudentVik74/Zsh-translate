@@ -20,11 +20,11 @@
 
 ### Железо
 
-| Параметр           | Минимум  | Рекомендуется |
-|--------------------|----------|---|
-| CPU                | 4+ ядер  |
-| RAM                | 8+ ГБ    |
-| Свободное место    |  5+ ГБ   |
+| Параметр           | Рекомендуется |
+|--------------------|---------------|
+| CPU                | 4+ ядер       |
+| RAM                | 8+ ГБ         |
+| Свободное место    | 5+ ГБ         |
 
 ---
 
@@ -274,13 +274,14 @@ docker stats libretranslate
 ---
 
 ## Гибридный режим 
+В текущей версии `translate.py` не реализовано — только идея.
 
 Можно совместить: сначала пробовать офлайн, при неудаче — онлайн.
 
 ```python
 PROVIDERS = [
-    "http://localhost:5000/translate",         # офлайн
-    "https://api.mymemory.translated.net/get",  # онлайн
+"http://localhost:5000/translate",         # офлайн
+"https://api.mymemory.translated.net/get",  # онлайн
 ]
 
 def lt_translate(text, source="en", target="ru"):
@@ -294,7 +295,6 @@ def lt_translate(text, source="en", target="ru"):
     return text, False
 ```
 
-В текущей версии `translate.py` не реализовано — только идея.
 
 ---
 
