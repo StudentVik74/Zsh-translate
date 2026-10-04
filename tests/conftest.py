@@ -23,7 +23,7 @@ from utils import translate as mt
 def reset_flags(monkeypatch):
 	"""Сбросить глобальные флаги перед каждым тестом."""
 	monkeypatch.setattr(mt, "_api_warned", False)
-	monkeypatch.setattr(mt, "_cache_warned", False)
+	monkeypatch.setattr(mt го, "_cache_warned", False)
 	yield
 
 
@@ -42,4 +42,4 @@ def mock_requests(mocker):
 	Использование:
 		mock_requests.return_value.json.return_value = {...}
 	"""
-	return mocker.patch("utils.mymemory_translator.requests.get")
+	return mocker.patch("utils.translate.requests.get")
