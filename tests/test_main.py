@@ -22,7 +22,7 @@ from utils import translate as mt
 @pytest.fixture
 def mock_translate(mocker):
 	"""Мок lt_translate."""
-	return mocker.patch("utils.mymemory_translator.lt_translate")
+	return mocker.patch("utils.translate.lt_translate")
 
 
 @pytest.fixture

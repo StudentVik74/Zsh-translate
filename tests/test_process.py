@@ -20,7 +20,7 @@ def mock_translate(mocker):
 
 	Каждый тест настраивает .side_effect или .return_value сам.
 	"""
-	return mocker.patch("utils.mymemory_translator.lt_translate")
+	return mocker.patch("utils.translate.lt_translate")
 
 
 # ─── Базовые случаи ───────────────────────────────────────────────

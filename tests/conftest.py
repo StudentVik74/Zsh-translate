@@ -8,6 +8,7 @@
 """
 import sys
 from pathlib import Path
+from utils import translate as mt
 
 import pytest
 
@@ -16,7 +17,6 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
 	sys.path.insert(0, str(ROOT))
 
-from utils import translate as mt
 
 
 @pytest.fixture(autouse=True)
@@ -42,4 +42,4 @@ def mock_requests(mocker):
 	Использование:
 		mock_requests.return_value.json.return_value = {...}
 	"""
-	return mocker.patch("utils.mymemory_translator.requests.get")
+	return mocker.patch("utils.translate.requests.get")
