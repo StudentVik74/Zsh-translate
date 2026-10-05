@@ -38,6 +38,7 @@
 - Не требует интернета после скачивания.
 - Совместим с API LibreTranslate
 - Запускается быстро
+- Есть интерактивный режим открываеться в браузере
 
 Плюсы: простота, готовность, совместимость с текущим скриптом.
 
@@ -107,7 +108,7 @@ curl -sS http://localhost:5000/translate \
 
 ### 4. Подключить к `translate.py`
 
-Открой `utils/translate.py` и измени две вещи.
+Открой `translate.py` и измени две вещи.
 
 Константа URL:
 
@@ -144,7 +145,7 @@ def lt_translate(text: str, source: str = "en", target: str = "ru"):
 ### 5. Проверить
 
 ```bash
-echo "Hello, World! This is a test." | python3 utils/translate.py
+ ru -t "Hello, World! This is a test."
 ```
 
 Ожидаемо:
@@ -303,7 +304,7 @@ def lt_translate(text, source="en", target="ru"):
 - [LibreTranslate на Docker Hub](https://hub.docker.com/r/libretranslate/libretranslate)
 - [Community-образ с моделями ru/en/zh](https://hub.docker.com/r/dvurechensky/libretranslate-offline-ru-en-zh)
 - [LibreTranslate API docs](https://libretranslate.com/docs/)
-- [Проверка AVX2 в Linux](https://unix.stackexchange.com/questions/261836/how-to-check-if-cpu-supports-avx2)
+
 
 ---
 
