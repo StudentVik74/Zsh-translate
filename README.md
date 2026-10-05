@@ -2,9 +2,9 @@
 
 ## read the full manual -- [README-RU.md](./README-ru.md)
 
-![terminal](/images/terminal.png)
+![terminal](./images/terminal.png)
 
-![powershell](/images/powershell_terminal.png)
+![powershell](./images/powershell_terminal.png)
 
 
 [![Tests](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml/badge.svg)](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml)
