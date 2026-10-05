@@ -2,7 +2,7 @@
 
 Переводчик текста и вывода команд на русский язык для **zsh** (Linux/macOS) и **PowerShell** (Windows).
 
-Работает через [MyMemory Translation API](https://mymemory.translated.net/). Одна зависимость — библиотека `requests`. Читает `stdin`, пишет перевод в `stdout`. Подходит для конвейеров, скриптов и интерактивного терминала.
+Работает через [MyMemory Translation API](https://mymemory.translated.net/). Подходит для конвейеров, скриптов и интерактивного терминала.
 
 [![Tests](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml/badge.svg)](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml)
 [![Coverage: 97%](https://img.shields.io/badge/coverage-97%25-brightgreen.svg?style=flat-square)](#тесты)
@@ -49,7 +49,7 @@
 
 - **Python** 3.12 или выше
 - **Библиотека** `requests`
-- Для тестов: `uv`, `pytest`
+- Для тестов:  `pytest`
 
 ---
 
@@ -335,7 +335,6 @@ stdout
 
 ## Тесты
 
-- **121 тест**, покрытие **97%**.
 - Запуск всех быстрых тестов (без сети):
 
   ```bash
@@ -355,8 +354,6 @@ stdout
   ```
 
 Подробное описание тестов — в [`tests/README.md`](tests/README.md).
-
-**CI:** GitHub Actions запускает тесты при каждом push и pull request на трёх ОС (Ubuntu, Windows, macOS) и двух версиях Python (3.12, 3.13).
 
 ---
 
