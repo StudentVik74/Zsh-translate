@@ -12,6 +12,8 @@
 
 ![terminal](./images/terminal.png)
 
+![powershell](/images/powershell_terminal.png)
+
 ---
 
 ## Содержание

@@ -4,6 +4,8 @@
 
 ![terminal](/images/terminal.png)
 
+![powershell](/images/powershell_terminal.png)
+
 
 [![Tests](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml/badge.svg)](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml)
 [![Coverage: 97%](https://img.shields.io/badge/coverage-97%25-brightgreen.svg?style=flat-square)](#тесты)
