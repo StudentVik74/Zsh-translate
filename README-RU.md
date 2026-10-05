@@ -67,7 +67,7 @@
 
    ```powershell
    New-Item -ItemType Directory -Path "$HOME\.zsh" -Force
-   Copy-Item mymemory_translator.py "$HOME\.zsh\translate.py"
+   Copy-Item translate.py "$HOME\.zsh\translate.py"
    ```
 
 4. Разрешите выполнение скриптов (один раз):
@@ -276,7 +276,7 @@ Remove-Item "$HOME\.cache\translate_ru\translate_ru.json"
 
 ## Настройки
 
-Переменные в начале файла `mymemory_translator.py`:
+Переменные в начале файла `translate.py`:
 
 | Переменная       | Описание                             | Значение по умолчанию                       |
 |------------------|--------------------------------------|---------------------------------------------|
