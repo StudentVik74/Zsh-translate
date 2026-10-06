@@ -1,21 +1,20 @@
 # Zsh-translate
 
-Переводчик текста и вывода команд на русский язык для **zsh** (Linux/macOS) и **PowerShell** (Windows).
+## Этот проект создан в первую очередь для новичков которые хотят изучать программирование, но не знают английский язык.
 
-Работает через [MyMemory Translation API](https://mymemory.translated.net/). Подходит для конвейеров, скриптов и интерактивного терминала.
+Переводчик текста и вывода команд на русский язык для терминала (Linux/macOS) и **PowerShell** (Windows).
 
-[![Tests](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml/badge.svg)](https://github.com/StudentVik74/Zsh-translate/actions/workflows/test.yml)
+Работает онлайн через [MyMemory Translation API](https://mymemory.translated.net/). Подходит для конвейеров, скриптов и интерактивного терминала.
+
+---
+![terminal](./images/terminal.png)
+![powershell](./images/powershell_terminal.png)
+---
 [![Coverage: 97%](https://img.shields.io/badge/coverage-97%25-brightgreen.svg?style=flat-square)](#тесты)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/platform-Windows_%7C_Linux_%7C_macOS-lightgrey.svg?style=flat-square)](#установка)
-
-![terminal](./images/terminal.png)
-
-![powershell](./images/powershell_terminal.png)
-
 ---
-
 ## Содержание
 
 - [Возможности](#возможности)
@@ -31,7 +30,6 @@
 - [Ограничения](#ограничения)
 - [Режим offline](#offline)
 - [Лицензия](#лицензия)
-
 ---
 
 ## Возможности
