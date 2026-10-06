@@ -22,3 +22,6 @@ addopts = "-m 'not integration'"
 markers = [
 "integration: тесты, требующие реальный MyMemory API (медленно, тратит квоту)",
 ]
+
+[project.scripts]
+ru = "utils.translate:main"
