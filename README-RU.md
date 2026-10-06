@@ -247,11 +247,11 @@ ru
 - При повторном запуске строка, найденная в кэше, переводится мгновенно, без обращения к API.
 
 Сбросить кэш:
-
+ - на линукс
 ```bash
 rm -f ~/.cache/translate_ru/translate_ru.json
 ```
-
+- на windows
 ```powershell
 Remove-Item "$HOME\.cache\translate_ru\translate_ru.json"
 ```
