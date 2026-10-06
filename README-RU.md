@@ -50,44 +50,36 @@
 
 - **Python** 3.12 или выше
 - **Библиотека** `requests`
-- Для тестов:  `pytest`
 
 ---
 
 ## Установка
+> 📖 Подробное руководство по `uv` для новичков:
+> [WIKI/UV_GUIDE_RU.md](WIKI/UV_GUIDE_RU.md).
 
-### Windows (PowerShell)
 
-1. Установите Python 3.12+ с [python.org](https://www.python.org/downloads/). При установке поставьте галочку **«Add Python to PATH»**.
+Есть два способа установки: 
 
-2. Установите `requests`:
+### Способ 1. Через `uv` 
 
-   ```powershell
-   python -m pip install requests
-   ```
+Если у вас установлен `uv`, весь процесс сводится к трём командам:
 
-3. Создайте папку и скопируйте скрипт:
+```bash
+git clone https://github.com/StudentVik74/Zsh-translate.git
+cd Zsh-translate
+uv sync
+```
 
-   ```powershell
-   New-Item -ItemType Directory -Path "$HOME\.zsh" -Force
-   Copy-Item translate.py "$HOME\.zsh\translate.py"
-   ```
+---
+### Способ 2. Вручную 
 
-4. Разрешите выполнение скриптов (один раз):
+Если `uv` недоступен, установите единственную зависимость вручную —
+инструкции для каждой ОС в подразделах ниже.
 
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
 
-5. Добавьте функцию `ru` в профиль PowerShell. Подробная инструкция с готовым кодом — в [`PowerShell/INSTALL_RU.md`](Scripts/INSTALL_RU.md).
+### Windows (PowerShell) смотри в  [WIKI](./WIKI/INSTALL_RU.md)  
 
-6. Перезапустите PowerShell и проверьте:
-
-   ```powershell
-   ru -t "hello"
-   ```
-
-### Linux / macOS (zsh)
+### Linux / macOS (bash)
 
 1. Установите `requests`:
 
@@ -112,7 +104,7 @@
 3. Добавьте функцию `ru` в `~/.zshrc`:
 
    ```bash
-   nano ~/.zshrc
+   nano ~/.zshrc 
    ```
 
    В конец файла вставьте:
@@ -156,7 +148,9 @@
 
    ```bash
    ru -t "hello"
-   ```
+   ``` 
+
+
 
 ---
 
