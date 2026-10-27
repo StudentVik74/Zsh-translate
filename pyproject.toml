@@ -10,9 +10,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-"pytest>=8.1.1,<9",
-"pytest-mock>=3.14.0",
-"pytest-cov>=6.0.0",
+    "pytest>=8.1.1,<9",
+    "pytest-mock>=3.14.0",
+    "pytest-cov>=6.0.0",
+    "wemake-python-styleguide>=1.8.1",
+    "flake8-pyproject>=1.2.4",
 ]
 
 [tool.pytest.ini_options]
@@ -22,6 +24,11 @@ addopts = "-m 'not integration'"
 markers = [
 "integration: тесты, требующие реальный MyMemory API (медленно, тратит квоту)",
 ]
+
+[tool.flake8]
+select = ["WPS", "E999"]
+format = "wemake"
+extend-exclude = [".venv", "venv", "tests/fixtures/"]
 
 [project.scripts]
 ru = "utils.translate:main"
