@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """
 Перевод stdin на русский через MyMemory API.
-
-- Батчинг(пакет): соседние строки склеиваются в один запрос.
-- Кэш: только успешные переводы.
-- Проверка API: одно предупреждение при первой ошибке, затем тишина.
 """
 
 import sys
@@ -17,10 +13,7 @@ import requests
 # Форсируем UTF-8 для stdin/stdout/stderr.
 # На Windows кодировка по умолчанию — CP1251, из-за чего BOM
 # и русские буквы читаются как кракозябры.
-#
-# В тестах (pytest) sys.stdin заменяется на DontReadFromInput,
-# у которого нет метода reconfigure. Поэтому проверяем наличие
-# метода перед вызовом — это безопасно и не ломает тесты.
+
 for _stream in (sys.stdin, sys.stdout, sys.stderr):
     if hasattr(_stream, "reconfigure"):
         try:
@@ -31,8 +24,8 @@ for _stream in (sys.stdin, sys.stdout, sys.stderr):
 
 CACHE_FILE = os.path.expanduser("~/.cache/translate_ru/translate_ru.json")
 LT_URL = "https://api.mymemory.translated.net/get"
-MYMEMORY_EMAIL = ""  # ← впиши свой email для лимита 50000 символов/день
-MAX_CHUNK = 400  # MyMemory плохо переносит большие батчи
+MYMEMORY_EMAIL = ""
+MAX_CHUNK = 400
 
 SKIP_PATTERNS = [
     re.compile(r"^\s*[\$#>]\s"),
@@ -41,16 +34,16 @@ SKIP_PATTERNS = [
     re.compile(r"^\s*[\w\-\./]+:\d+:\d+:"),
 ]
 
-# Кириллица где угодно в строке — признак, что текст уже на русском
+
 CYRILLIC_RE = re.compile(r"[а-яА-ЯёЁ]")
 
-# не переводим имена команд в help-выводе
+
 HELP_LINE_RE = re.compile(r"^(\s{2,}\S+(?:\s+\S+)?)(\s{2,})([A-Z].*?)(\s*)$")
 
-# Флаг: предупреждение о недоступности API
+
 _api_warned = False
 
-# Флаг: предупреждение о сбое сохранения кэша
+
 _cache_warned = False
 
 
