@@ -34,16 +34,10 @@ SKIP_PATTERNS = [
     re.compile(r"^\s*[\w\-\./]+:\d+:\d+:"),
 ]
 
-
 CYRILLIC_RE = re.compile(r"[а-яА-ЯёЁ]")
-
-
 HELP_LINE_RE = re.compile(r"^(\s{2,}\S+(?:\s+\S+)?)(\s{2,})([A-Z].*?)(\s*)$")
 
-
 _api_warned = False
-
-
 _cache_warned = False
 
 
