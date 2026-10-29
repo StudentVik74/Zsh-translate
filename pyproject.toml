@@ -30,5 +30,8 @@ select = ["WPS", "E999"]
 format = "wemake"
 extend-exclude = [".venv", "venv", "tests/fixtures/"]
 
+[tool.uv]
+package = true
+
 [project.scripts]
 ru = "utils.translate:main"
