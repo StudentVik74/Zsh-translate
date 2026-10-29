@@ -52,9 +52,6 @@
 ---
 
 ## Установка
-> 📖 Подробное руководство по `uv` для новичков:
-> [WIKI/UV_GUIDE_RU.md](WIKI/UV_GUIDE_RU.md).
-
 
 Есть два способа установки: 
 
@@ -67,6 +64,9 @@ git clone https://github.com/StudentVik74/Zsh-translate.git
 cd Zsh-translate
 uv sync
 ```
+
+> 📖 Подробное руководство по `uv` для новичков:
+> [WIKI/UV_GUIDE_RU.md](WIKI/UV_GUIDE_RU.md).
 
 ---
 ### Способ 2. Вручную 
