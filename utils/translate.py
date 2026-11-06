@@ -25,7 +25,7 @@ for _stream in (sys.stdin, sys.stdout, sys.stderr):
 CACHE_FILE = os.path.expanduser("~/.cache/translate_ru/translate_ru.json")
 LT_URL = "https://api.mymemory.translated.net/get"
 MYMEMORY_EMAIL = ""
-MAX_CHUNK = 4_00
+MAX_CHUNK = 400
 
 SKIP_PATTERNS = [
     re.compile(r"^\s*[\$#>]\s"),
@@ -130,12 +130,12 @@ def check_quota() -> bool | None:
         params = {"q": "test", "langpair": "en|ru"}
         if MYMEMORY_EMAIL:
             params["de"] = MYMEMORY_EMAIL
-        r = requests.get(LT_URL, params=params, timeout=1_0)
+        r = requests.get(LT_URL, params=params, timeout=10)
         data = r.json()
         if data.get("quotaFinished"):
             return True
         status = data.get("responseStatus")
-        if status and int(status) == 4_29:
+        if status and int(status) == 429:
             return True
         return False
     except Exception:
@@ -203,12 +203,12 @@ def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str
         if MYMEMORY_EMAIL:
             params["de"] = MYMEMORY_EMAIL
 
-        r = requests.get(LT_URL, params=params, timeout=3_0)
+        r = requests.get(LT_URL, params=params, timeout=30)
         r.raise_for_status()
         data = r.json()
 
         status = data.get("responseStatus")
-        if status and int(status) != 2_00:
+        if status and int(status) != 200:
             raise RuntimeError(
                 f"MyMemory вернул статус {status}: "
                 f"{data.get('responseDetails') or 'без деталей'}"
