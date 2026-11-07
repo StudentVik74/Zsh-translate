@@ -31,5 +31,6 @@ Thumbs.db
 
 # Логи
 *.log
- 
 
+# Работа с wps
+wps
