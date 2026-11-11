@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-"""
-Перевод stdin на русский через MyMemory API.
-"""
+"""Перевод stdin на русский через MyMemory API."""
 
 import sys
 import os
