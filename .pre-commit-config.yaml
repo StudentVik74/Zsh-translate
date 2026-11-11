@@ -1,0 +1,16 @@
+repos:
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: uv run pytest tests/ -v   # при необходимости замените путь к тестам
+        language: system
+        stages: [pre-push]               # ключевой момент: срабатывает перед push
+        pass_filenames: false            # pytest не нужно передавать имена файлов
+        always_run: true 
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.13.7   # актуальную версию можно посмотреть в документации uv
+    hooks:
+      - id: uv-lock
+        
