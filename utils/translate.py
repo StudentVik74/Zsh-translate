@@ -136,7 +136,7 @@ def check_quota() -> bool | None:
         status = data.get("responseStatus")
         return bool(status and int(status) == 429)
 
-    except Exception:
+    except Exception:  # noqa: BLE001 - любая ошибка проверки => "неизвестно"
         return None
 
 
