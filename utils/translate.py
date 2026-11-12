@@ -108,7 +108,7 @@ def save_cache(cache: dict) -> None:
         os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
         with open(CACHE_FILE, "w", encoding="utf-8") as f:
             json.dump(cache, f, ensure_ascii=False)
-    except Exception as e:
+    except (OSError, TypeError, ValueError) as e:
         if _cache_warned:
             return
         _cache_warned = True
