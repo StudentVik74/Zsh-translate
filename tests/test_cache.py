@@ -6,10 +6,7 @@ CACHE_FILE на временный путь в tmp_path. Реальный ~/.cac
 
 import json
 
-import pytest
-
 from utils import translate as mt
-
 
 # ─── load_cache ───────────────────────────────────────────────────
 

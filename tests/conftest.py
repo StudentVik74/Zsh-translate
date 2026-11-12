@@ -9,9 +9,10 @@
 
 import sys
 from pathlib import Path
-from utils import translate as mt
 
 import pytest
+
+from utils import translate as mt
 
 # Гарантируем, что корень проекта в sys.path
 ROOT = Path(__file__).resolve().parent.parent
