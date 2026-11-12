@@ -130,12 +130,13 @@ def check_quota() -> bool | None:
             params["de"] = MYMEMORY_EMAIL
         r = requests.get(LT_URL, params=params, timeout=10)
         data = r.json()
+
         if data.get("quotaFinished"):
             return True
+
         status = data.get("responseStatus")
-        if status and int(status) == 429:
-            return True
-        return False
+        return bool(status and int(status) == 429)
+
     except Exception:
         return None
 
