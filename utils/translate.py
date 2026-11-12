@@ -90,7 +90,7 @@ def load_cache() -> dict:
     try:
         with open(CACHE_FILE, encoding="utf-8") as f:
             return json.load(f)
-    except Exception:
+    except (OSError, json.JSONDecodeError, TypeError, ValueError):
         return {}
 
 
