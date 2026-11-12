@@ -1,4 +1,5 @@
 """Перевод stdin на русский через MyMemory API."""
+from __future__ import annotations
 
 import hashlib
 import json
@@ -121,7 +122,7 @@ def check_quota() -> bool | None:
     Возвращает:
             True — квота исчерпана;
             False — квота не исчерпана;
-            None — не удалось проверить (сеть, таймаут).
+            None — не удалось проверить (сеть, тайм-аут).
     """
     try:
         params = {"q": "test", "langpair": "en|ru"}
@@ -180,7 +181,7 @@ def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str
 
     Отправляет текст на перевод с указанного источника на целевой язык.
     При успешном ответе с status 200 возвращает переведённый текст.
-    При любой ошибке (сеть, таймаут, неверный статус, повреждённый JSON)
+    При любой ошибке (сеть, тайм-аут, неверный статус, повреждённый JSON)
     выводит предупреждение (один раз) и возвращает исходный текст.
 
     Args:
@@ -190,7 +191,7 @@ def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str
 
     Returns:
             Кортеж (translated_text: str, success: bool):
-              - (перевод, True)  — при успешном переводе;
+              - (перевод, True) — при успешном переводе;
               - (исходный текст, False) — при ошибке.
     """
     try:
@@ -260,7 +261,7 @@ def process(text: str, cache: dict) -> str:
             plan.append({"type": "raw", "value": line})
             continue
 
-        # Строка вида "  команда    Описание" — переводим только описание
+        # Строка вида: "команда" - "Описание" — переводим только описание
         m_help = HELP_LINE_RE.match(line)
         if m_help:
             prefix = m_help.group(1) + m_help.group(2)
