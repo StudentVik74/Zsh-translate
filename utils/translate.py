@@ -213,7 +213,7 @@ def lt_translate(text: str, source: str = "en", target: str = "ru") -> tuple[str
             )
 
         return data["responseData"]["translatedText"], True
-    except Exception as e:
+    except Exception as e: # noqa: BLE001 - не роняем перевод из-за одной ошибки API
         notify_first_failure(e)
         return text, False
 
