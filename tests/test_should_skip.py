@@ -4,7 +4,6 @@ import pytest
 
 from utils.translate import should_skip
 
-
 # ─── Пустые строки ────────────────────────────────────────────────
 
 

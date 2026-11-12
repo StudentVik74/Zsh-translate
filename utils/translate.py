@@ -58,9 +58,8 @@ def should_skip(line: str) -> bool:
         return True
     if any(p.match(line) for p in SKIP_PATTERNS):
         return True
-    if CYRILLIC_RE.search(line):
-        return True
-    return False
+    return bool(CYRILLIC_RE.search(line))
+
 
 
 def key(s: str) -> str:
@@ -343,8 +342,7 @@ def main() -> None:
     его «теряет», дописывает перенос вручную.
     """
     text = sys.stdin.read()
-    if text.startswith("\ufeff"):
-        text = text[1:]
+    text = text.removeprefix("\ufeff")
     if not text.strip():
         return
     cache = load_cache()

@@ -8,13 +8,10 @@
 - параметр de (email) передаётся, только если задан.
 """
 
-from unittest.mock import MagicMock
 
-import pytest
 import requests
 
 from utils import translate as mt
-
 
 # ─── Успешные и явные ответы ──────────────────────────────────────
 

@@ -18,7 +18,9 @@ htmlcov/
 
 # IDE
 .idea/
-.vscode/
+.zed
+.gigaide
+
 *.swp
 *.swo
 
@@ -35,5 +37,5 @@ Thumbs.db
 # Работа с wps
 wps
 
+# Прочие файлы и каталоги
 iskin
-

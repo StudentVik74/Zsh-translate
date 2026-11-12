@@ -15,7 +15,6 @@ import requests
 
 from utils import translate as mt
 
-
 # ─── Успешный перевод ─────────────────────────────────────────────
 
 
