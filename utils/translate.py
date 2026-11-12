@@ -1,10 +1,11 @@
 """Перевод stdin на русский через MyMemory API."""
 
-import sys
+import hashlib
+import json
 import os
 import re
-import json
-import hashlib
+import sys
+
 import requests
 
 # Форсируем UTF-8 для stdin/stdout/stderr.
