@@ -13,12 +13,14 @@ import requests
 # На Windows кодировка по умолчанию — CP1251, из-за чего BOM
 # и русские буквы читаются как кракозябры.
 
-for _stream in (sys.stdin, sys.stdout, sys.stderr):
-    if hasattr(_stream, "reconfigure"):
-        try:
-            _stream.reconfigure(encoding="utf-8")
-        except Exception:  # noqa: BLE001 - reconfigure может не поддерживаться
-            print("Не удалось настроить кодировку вывода (utf-8).", file=sys.stderr)
+def configure_encoding() -> None:
+    """ Устанавливает UTF-8 в stdin/stdout/stderr. """
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+           try:
+               stream.reconfigure(encoding="utf-8")
+           except Exception:  # noqa: BLE001 - reconfigure может не поддерживаться
+               print("Не удалось настроить кодировку вывода (utf-8).", file=sys.stderr)
 
 
 CACHE_FILE = os.path.expanduser("~/.cache/translate_ru/translate_ru.json")
